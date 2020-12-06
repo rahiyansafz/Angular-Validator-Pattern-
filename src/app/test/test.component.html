@@ -1,0 +1,34 @@
+<h2>Edit Tenant Details</h2>
+<div [formGroup]="form">
+  <h3>Primary Contact Details</h3>
+  <div fxFlex fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="24px grid" formGroupName="primary_contact">
+    <div fxFlex="50">
+      <mat-form-field class="full-width">
+        <mat-label>Primary Contact Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="50">
+      <mat-form-field class="full-width">
+        <mat-label>Primary Contact Phone</mat-label>
+        <input matInput type="tel" formControlName="phone" />
+      </mat-form-field>
+    </div>
+    <div fxFlex="75">
+      <mat-form-field class="full-width">
+        <mat-label>Primary Contact Email</mat-label>
+        <input matInput type="email" formControlName="email" required />
+        <mat-error *ngIf="primaryContactEmail.invalid">A valid email address is required.</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="form-actions">
+    <button mat-flat-button color="primary" [disabled]="form.invalid">Save changes</button>
+    <a mat-button>Cancel</a>
+  </div>
+</div>
+<p>{{form.valid|json}}</p>
+<p>{{primaryContactEmail.valid|json}}</p>
+<p>{{form.errors|json}}</p>
+<p>{{form.value|json}}</p>
